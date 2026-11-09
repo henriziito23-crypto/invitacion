@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Para Melany ✨</title>
-  <!-- Canvas Confetti -->
+  <!-- Efecto Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     * {
@@ -118,13 +118,8 @@
       transition: all 0.25s ease;
     }
 
-    .btn-main:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(255, 75, 145, 0.45);
-    }
-
     .btn-main:active {
-      transform: translateY(1px);
+      transform: scale(0.98);
     }
 
     /* Modal Visor */
@@ -186,7 +181,7 @@
     }
 
     .modal-footer {
-      padding: 12px;
+      padding: 14px;
       text-align: center;
       background: #100d17;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -195,8 +190,8 @@
     .modal-footer a {
       color: #ff758c;
       text-decoration: none;
-      font-size: 0.84rem;
-      font-weight: 500;
+      font-size: 0.86rem;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -207,7 +202,7 @@
     <h1>Hola, <span>Melany</span> ✨</h1>
     
     <p class="message">
-      Me encanta compartir tiempo contigo y la buena energía que siempre se arma cuando salimos. 
+      Me encanta compartir tiempo contigo y la buena vibra que siempre se arma. 
       Pensé en un plan diferente para ir juntos y disfrutar de buena música.
     </p>
 
@@ -218,11 +213,11 @@
       </div>
       <div class="event-item">
         <span class="event-icon">🎟️</span>
-        <div><strong>Pases:</strong> Tu boleto ya está reservado</div>
+        <div><strong>Pases:</strong> Tu boleto ya está asegurado</div>
       </div>
       <div class="event-item">
         <span class="event-icon">🎶</span>
-        <div><strong>Plan:</strong> Cantar, reír y pasar una noche genial</div>
+        <div><strong>Plan:</strong> Cantar, disfrutar y pasar una noche genial</div>
       </div>
     </div>
 
@@ -237,16 +232,11 @@
         <button class="btn-close" id="btnClose">&times;</button>
       </div>
 
-      <!-- Sustituye 'entrada.pdf' por el nombre de tu archivo o tu link de Drive/nube -->
-      <<iframe 
-  src="https://drive.google.com/file/d/1u2N19Ex_qWihJUxmTeu86LKUn4VO6NRS/preview" 
-  class="pdf-frame" 
-  id="pdfFrame" 
-  allow="autoplay">
-</iframe>
+      <!-- Apunta directamente a tu PDF en el repositorio -->
+      <iframe src="entradas_chicha360.pdf#toolbar=0" class="pdf-frame" id="pdfFrame"></iframe>
 
       <div class="modal-footer">
-        <a href="entrada.pdf" target="_blank">Toca aquí para abrir o descargar el archivo completo</a>
+        <a href="entradas_chicha360.pdf" target="_blank">Toca aquí para ver o descargar la entrada completa</a>
       </div>
     </div>
   </div>
@@ -258,8 +248,8 @@
 
     function lanzarChispas() {
       confetti({
-        particleCount: 65,
-        spread: 60,
+        particleCount: 70,
+        spread: 65,
         origin: { y: 0.65 },
         colors: ['#ff4b91', '#8a4bff', '#ffffff', '#ffd166']
       });
@@ -284,4 +274,3 @@
   </script>
 </body>
 </html>
-
