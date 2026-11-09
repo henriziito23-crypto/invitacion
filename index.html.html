@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Melany ✨</title>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1a0f2e, #0a0612);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 26px;
+      padding: 34px 26px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tag {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(255, 75, 145, 0.25), rgba(138, 75, 255, 0.25));
+      border: 1px solid rgba(255, 75, 145, 0.5);
+      color: #ff9ec6;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      color: #ffffff;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.message {
+      color: #c4c4cc;
+      font-size: 0.96rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .event-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: left;
+      margin-bottom: 26px;
+    }
+
+    .event-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+      color: #ececec;
+    }
+
+    .event-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .event-icon {
+      font-size: 1.25rem;
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, #ff4b91, #8a4bff);
+      color: #ffffff;
+      border: none;
+      padding: 16px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 16px;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(255, 75, 145, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(255, 75, 145, 0.45);
+    }
+
+    .btn-main:active {
+      transform: translateY(1px);
+    }
+
+    /* Modal Visor */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-box {
+      background: #14111c;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 22px;
+      width: 100%;
+      max-width: 480px;
+      height: 82vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-header h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #f1f1f1;
+    }
+
+    .btn-close {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: #fff;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .pdf-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #ffffff;
+    }
+
+    .modal-footer {
+      padding: 12px;
+      text-align: center;
+      background: #100d17;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-footer a {
+      color: #ff758c;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="tag">Un detalle para ti</div>
+    <h1>Hola, <span>Melany</span> ✨</h1>
+    
+    <p class="message">
+      Me encanta compartir tiempo contigo y la buena energía que siempre se arma cuando salimos. 
+      Pensé en un plan diferente para ir juntos y disfrutar de buena música.
+    </p>
+
+    <div class="event-card">
+      <div class="event-item">
+        <span class="event-icon">📍</span>
+        <div><strong>Destino:</strong> Chicha 360</div>
+      </div>
+      <div class="event-item">
+        <span class="event-icon">🎟️</span>
+        <div><strong>Pases:</strong> Tu boleto ya está reservado</div>
+      </div>
+      <div class="event-item">
+        <span class="event-icon">🎶</span>
+        <div><strong>Plan:</strong> Cantar, reír y pasar una noche genial</div>
+      </div>
+    </div>
+
+    <button class="btn-main" id="btnOpen">Ver nuestra entrada 🎟️</button>
+  </div>
+
+  <!-- Modal con PDF -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Tu pase al Chicha 360 ✨</h3>
+        <button class="btn-close" id="btnClose">&times;</button>
+      </div>
+
+      <!-- Sustituye 'entrada.pdf' por el nombre de tu archivo o tu link de Drive/nube -->
+      <<iframe 
+  src="https://drive.google.com/file/d/1u2N19Ex_qWihJUxmTeu86LKUn4VO6NRS/preview" 
+  class="pdf-frame" 
+  id="pdfFrame" 
+  allow="autoplay">
+</iframe>
+
+      <div class="modal-footer">
+        <a href="entrada.pdf" target="_blank">Toca aquí para abrir o descargar el archivo completo</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btnOpen = document.getElementById('btnOpen');
+    const btnClose = document.getElementById('btnClose');
+    const modal = document.getElementById('modal');
+
+    function lanzarChispas() {
+      confetti({
+        particleCount: 65,
+        spread: 60,
+        origin: { y: 0.65 },
+        colors: ['#ff4b91', '#8a4bff', '#ffffff', '#ffd166']
+      });
+    }
+
+    btnOpen.addEventListener('click', () => {
+      lanzarChispas();
+      setTimeout(() => {
+        modal.style.display = 'flex';
+      }, 350);
+    });
+
+    btnClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
+
